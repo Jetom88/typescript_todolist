@@ -23,13 +23,15 @@ function App() {
   };
 
   const onSubmit = () => {
+    if (form.content === "") {
+      return alert("내용 ㄱㄱ");
+    }
     setTodos([...todos, form]);
 
     setForm({
       ...form,
       id: form.id + 1,
       content: "",
-      isComplete: false,
     });
   };
 
@@ -40,7 +42,12 @@ function App() {
         <TodoList todos={todos} />
 
         <div className="addContents">
-          <input name="content" className="input" onChange={onChange} />
+          <input
+            name="content"
+            className="input"
+            onChange={onChange}
+            value={form.content}
+          />
           <button type="submit" className="btn" onClick={onSubmit}>
             제출
           </button>
