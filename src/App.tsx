@@ -35,11 +35,23 @@ function App() {
     });
   };
 
+  const onDelete = (id: number) => {
+    setTodos((todos) => todos.filter((list) => list.id !== id));
+  };
+
+  const onComplete = (id: number) => {
+    setTodos((todos) =>
+      todos.map((list) =>
+        list.id === id ? { ...list, isComplete: !list.isComplete } : list
+      )
+    );
+  };
+
   return (
     <div className="App">
       <div className="deco" />
       <div className="container">
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onDelete={onDelete} onComplete={onComplete} />
 
         <div className="addContents">
           <input
