@@ -1,9 +1,18 @@
+import { Todo } from "../App";
 import "../App.css";
 
-const TodoList = () => {
+type TodosProps = {
+  todos: Todo[];
+};
+
+const TodoList = ({ todos }: TodosProps) => {
   return (
     <ul className="todoList">
-      <li className="todo">testets</li>
+      {todos.map((todo) => (
+        <li key={todo.id} className="todo">
+          {todo.content}
+        </li>
+      ))}
     </ul>
   );
 };
