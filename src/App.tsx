@@ -61,7 +61,7 @@ function App() {
             value={form.content}
           />
           <button type="submit" className="btn" onClick={onSubmit}>
-            제출
+            submit
           </button>
         </div>
       </div>
