@@ -51,7 +51,11 @@ function App() {
     <div className="App">
       <div className="deco" />
       <div className="container">
-        <TodoList todos={todos} onDelete={onDelete} onComplete={onComplete} />
+        {todos.length !== 0 ? (
+          <TodoList todos={todos} onDelete={onDelete} onComplete={onComplete} />
+        ) : (
+          <p>할 일을 입력해주세요 👻</p>
+        )}
 
         <div className="addContents">
           <input
@@ -59,6 +63,7 @@ function App() {
             className="input"
             onChange={onChange}
             value={form.content}
+            autoComplete="off"
           />
           <button type="submit" className="btn" onClick={onSubmit}>
             submit
