@@ -64,6 +64,7 @@ const Calculator = () => {
       second: 0,
     });
     setOperator("");
+    setMode("FIRST_INPUT");
   };
 
   const getInputComponent = () => {
@@ -92,7 +93,8 @@ const Calculator = () => {
         {operator !== "" ? (
           <>
             <span>{numberState.first}</span>
-            <span>{operator === "*" ? "×" : operator}</span>
+            <span>{operator === "*" && "×"}</span>
+            <span>{operator === "/" && "÷"}</span>
             <span>{numberState.second}</span>
           </>
         ) : (
