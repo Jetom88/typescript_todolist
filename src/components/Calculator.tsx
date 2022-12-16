@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import "./calculator.css";
 
 type Mode = "FIRST_INPUT" | "SECOND_INPUT" | "RESULT";
@@ -93,7 +93,7 @@ const Calculator = () => {
         {operator !== "" ? (
           <>
             <span>{numberState.first}</span>
-            <span>{operator === "*" ? "×" : operator}</span>
+            <span>{operator === "*" ? "×" : operator === "/" ? "÷" : operator}</span>
 
             <span>{numberState.second}</span>
           </>
