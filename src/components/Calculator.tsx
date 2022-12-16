@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import "./calculator.css";
 
 type Mode = "FIRST_INPUT" | "SECOND_INPUT" | "RESULT";
@@ -15,16 +15,16 @@ const Calculator = () => {
 
   const [mode, setMode] = useState<Mode>("FIRST_INPUT");
 
-  const onClickNumber = (e: any) => {
+  const onClickNumber = (e: MouseEvent<HTMLButtonElement>) => {
     if (mode === "SECOND_INPUT") {
       setNumberState({
         ...numberState,
-        second: Number(numberState.second + e.target.value),
+        second: Number(numberState.second + e.currentTarget.value),
       });
     } else if (mode === "FIRST_INPUT") {
       setNumberState({
         ...numberState,
-        first: Number(numberState.first + e.target.value),
+        first: Number(numberState.first + e.currentTarget.value),
       });
     }
   };
@@ -93,8 +93,8 @@ const Calculator = () => {
         {operator !== "" ? (
           <>
             <span>{numberState.first}</span>
-            <span>{operator === "*" && "×"}</span>
-            <span>{operator === "/" && "÷"}</span>
+            <span>{operator === "*" ? "×" : operator}</span>
+
             <span>{numberState.second}</span>
           </>
         ) : (
